@@ -54,7 +54,7 @@ can interact with it.
 npm start
 ```
 
-Protractor alsoneeds WebDriver. 
+Protractor also needs WebDriver.
 
 ```
 npm run update-webdriver

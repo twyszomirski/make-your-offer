@@ -6,21 +6,24 @@ describe('make your offer', function() {
 
   browser.get('index.html');
 
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
+  it('should automatically redirect to /setup-new-bidding when location hash/fragment is empty', function() {
+    expect(browser.getLocationAbsUrl()).toMatch("/setup-new-bidding");
   });
 
 
-  describe('view1', function() {
+  describe('setup-new-bidding', function() {
 
     beforeEach(function() {
-      browser.get('index.html#/view1');
+      browser.get('index.html#/setup-new-bidding');
     });
 
 
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+    it('should render setup-new-bidding when user navigates to /setup-new-bidding', function() {
+      expect(element.all(by.css('h1')).first().getText()).
+        toMatch(/Create a new bidding/);
+
+      expect(element.all(by.css('header p')).first().getText()).
+          toMatch(/Define name for the bidding and add minimum two participants/);
     });
 
   });
