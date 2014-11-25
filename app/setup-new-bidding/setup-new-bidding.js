@@ -10,5 +10,15 @@ angular.module('makeYourOffer.setup-new-bidding', ['ngRoute'])
 }])
 
 .controller('SetupNewBiddingCtrl', function($scope) {
-	$scope.singleModel = 1;
+	  $scope.newBidding = "";
+      $scope.participants = [{ name : ""},{ name: ""}]
+
+      $scope.addParticipant = function(){
+        $scope.participants.push({ name : ""});
+      }
+
+      $scope.removeParticipant = function(index){
+        $scope.participants.splice(index,1);
+      }
+
 });
