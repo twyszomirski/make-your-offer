@@ -19,11 +19,45 @@ describe('make your offer', function() {
 
 
     it('should render setup-new-bidding when user navigates to /setup-new-bidding', function() {
-      expect(element.all(by.css('h1')).first().getText()).
+      expect(element.all(by.css('section h1')).first().getText()).
         toMatch(/Create a new bidding/);
 
-      expect(element.all(by.css('header p')).first().getText()).
+      expect(element.all(by.css('section p')).first().getText()).
           toMatch(/Define name for the bidding and add minimum two participants/);
+    });
+
+    it('should render one input for bidding name and two for participants initially', function() {
+      expect(element.all(by.css('.input-lg')).count()).
+          toBe(3);
+
+    });
+
+    it('should add one input for each click on Add Participant button', function() {
+      expect(element.all(by.css('.input-lg')).count()).
+          toBe(3);
+
+      element(by.id('addParticipant')).click();
+
+      expect(element.all(by.css('.input-lg')).count()).
+          toBe(4);
+
+    });
+
+    it('should remove one input for each click on ReMove button', function() {
+      expect(element.all(by.css('.input-lg')).count()).
+          toBe(3);
+
+      element(by.id('addParticipant')).click();
+
+      expect(element.all(by.css('.input-lg')).count()).
+          toBe(4);
+
+      element(by.id('removeParticipant2')).click();
+
+      expect(element.all(by.css('.input-lg')).count()).
+          toBe(3);
+
+
     });
 
   });
