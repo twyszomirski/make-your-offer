@@ -1,0 +1,44 @@
+
+<header class="image-bg-fluid-height">
+
+</header>
+
+<section role="main">
+    <div class="container">
+        <h1>Create a new bidding</h1>
+        <p>Define name for the bidding and add minimum two participants</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal well" role="form">
+                    <div class="form-group">
+                        <input  class="form-control input-lg" ng-model="newBidding" placeholder="New Bidding">
+                    </div>
+                    <div ng-repeat="participant in participants" class="form-group">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <input class="form-control input-lg" ng-model="participants[$index].name"
+                                       placeholder="Participant">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" ng-disabled="canRemove()" ng-click="removeParticipant($index)"
+                                        id="removeParticipant{{$index}}"
+                                        class="btn btn-lg">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" ng-click="addParticipant()" id='addParticipant'
+                            class="btn btn-lg btn-block">Add
+                        Participant</button>
+
+                    <button type="button"  class="btn  btn-lg btn-block">Create a Bidding</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
