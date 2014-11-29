@@ -23,7 +23,8 @@
                                        placeholder="Participant">
                             </div>
                             <div class="col-md-2">
-                                <button type="button" ng-click="removeParticipant($index)" id="removeParticipant{{$index}}"
+                                <button type="button" ng-disabled="canRemove()" ng-click="removeParticipant($index)"
+                                        id="removeParticipant{{$index}}"
                                         class="btn btn-lg">Remove</button>
                             </div>
                         </div>

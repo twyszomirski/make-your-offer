@@ -21,4 +21,8 @@ angular.module('makeYourOffer.setup-new-bidding', ['ngRoute'])
         $scope.participants.splice(index,1);
       }
 
-});
+      $scope.canRemove = function(){
+         return $scope.participants.length <= 2;
+      }
+
+})

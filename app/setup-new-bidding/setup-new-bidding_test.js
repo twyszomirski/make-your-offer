@@ -64,5 +64,30 @@ describe('makeYourOffer.setup-new-bidding module', function() {
     }));
 
   });
+
+  it('Should not be possible to remove participant whe there is less than two', inject(function($rootScope,$controller) {
+    var myScope = $rootScope.$new();
+    var setupNewBiddingCtrl = $controller('SetupNewBiddingCtrl',{$scope: myScope});
+
+    expect(myScope.participants.length).toBe(2);
+
+    expect(myScope.canRemove()).toBeTruthy();
+
+    myScope.addParticipant();
+    myScope.addParticipant();
+
+    expect(myScope.canRemove()).toBeFalsy();
+
+    myScope.removeParticipant(0);
+
+    expect(myScope.canRemove()).toBeFalsy();
+
+    myScope.removeParticipant(0);
+
+    expect(myScope.canRemove()).toBeTruthy();
+
+
+  }));
+
 });
 
