@@ -4,7 +4,7 @@ angular.module('makeYourOffer.setup-new-bidding', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/setup-new-bidding', {
-    templateUrl: 'setup-new-bidding/setup-new-bidding.html',
+    templateUrl: 'partials/setup-new-bidding.html',
     controller: 'SetupNewBiddingCtrl'
   });
 }])
