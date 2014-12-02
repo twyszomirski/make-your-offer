@@ -9,7 +9,7 @@ angular.module('makeYourOffer.setup-new-bidding', ['ngRoute'])
   });
 }])
 
-.controller('SetupNewBiddingCtrl', function($scope) {
+.controller('SetupNewBiddingCtrl', function($scope, $location) {
 	  $scope.newBidding = "";
       $scope.participants = [{ name : ""},{ name: ""}]
 
@@ -23,6 +23,10 @@ angular.module('makeYourOffer.setup-new-bidding', ['ngRoute'])
 
       $scope.canRemove = function(){
          return $scope.participants.length <= 2;
+      }
+
+      $scope.createBidding = function(){
+          $location.path('/bid-on-existing/19');
       }
 
 })
