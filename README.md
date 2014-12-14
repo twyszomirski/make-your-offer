@@ -62,6 +62,9 @@ npm run update-webdriver
 
 This will download and install the latest version of the stand-alone WebDriver tool.
 
+In order to successfully pass the e2e tests valid facebook credentials need to be provided in the file e2e-tests/scenarios.js.
+Replace FACEBOOK_USERNAME and FACEBOOK_PASSWORD.
+
 Running e2e tests:
 
 ```

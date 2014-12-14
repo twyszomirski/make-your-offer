@@ -9,19 +9,21 @@
         'makeYourOffer.version',
         'ui.bootstrap'
     ]).
-    run(function ($rootScope, $location, $window) {
-            $rootScope.$on('$routeChangeStart', function (event, next, current) {
-                if(!$rootScope.loggedIn) {
-                    if (!(next.templateUrl === "login/login.html")) {
-                        $location.path('/login')
-                    }
+    run(function ($rootScope, $location, $window, $timeout) {
+
+            $rootScope.$on('$routeChangeError', function (event, next, current) {
+                if (!(next.templateUrl === "login/login.html")) {
+                    $location.path('/login')
                 }
+
             });
 
             $rootScope.user = {};
+            $rootScope.loggedIn = false;
+            $rootScope.fbInitialized = false;
+
 
             $window.fbAsyncInit = function() {
-
                 FB.init({
 
                     appId: '361819630659077',
@@ -38,12 +40,12 @@
                 });
 
                 watchLoginChange();
+                $rootScope.fbInitialized = true;
 
             };
 
             (function(d){
                 // load the Facebook javascript SDK
-
                 var js,
                     id = 'facebook-jssdk',
                     ref = d.getElementsByTagName('script')[0];
@@ -65,11 +67,9 @@
             function watchLoginChange() {
 
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
-
                     if (response.status === 'connected') {
                         $rootScope.loggedIn = true;
                         getUserInfo();
-
                     }
                     else {
 
@@ -90,14 +90,15 @@
                         $rootScope.user = response;
                         console.log(response);
                     });
-
                 });
-
             };
 
 
-    }).
-    config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.otherwise({redirectTo: '/setup-new-bidding'});
-    }]);
+      }).
+      config(['$routeProvider', function ($routeProvider) {
+          $routeProvider.otherwise({
+              redirectTo: '/setup-new-bidding'
+          });
+      }]);
+
 
